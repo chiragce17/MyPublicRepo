@@ -1,0 +1,22 @@
+trigger:
+- none
+
+pool:
+  vmImage: windows-latest
+
+steps:
+  - task: PowerShell@2
+    displayName: 'Task-1 : Store the Variable Value'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Write-Host "Adding values to variable"
+        Write-Host "##vso[task.setvariable variable=vmName]TestVM"
+  
+  - task: PowerShell@2
+    displayName: 'Task-2 : Display the Variable Value'
+    inputs:
+      targetType: 'inline'
+      script: |
+        "VM Name: $(vmName)"
+  
