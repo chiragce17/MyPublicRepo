@@ -40,7 +40,7 @@ stages:
               targetType: 'inline'
               script: |
                 $VMs = @()
-                $VMs = $[ stageDependencies.Stage1.Job1.outputs['task1.vmList'] ]
+                $VMs = $[ stageDependencies.Stage1.Job1.outputs['Task1.vmList'] ]
                 $VMs
 
   
