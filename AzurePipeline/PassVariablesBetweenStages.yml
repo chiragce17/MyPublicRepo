@@ -4,6 +4,28 @@ trigger:
 pool:
   vmImage: windows-latest
 
+stages:
+  - stage: Stage1
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            name: Task1
+            displayName: Create and Store variable
+            inputs:
+              targetType: 'inline'
+              script: |
+                $vmList = @("TestVM1","TestVM2","TestVM3")
 
+          
+          - task: PowerShell@2
+            name: Task2
+            displayName: Some Random task
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Write your PowerShell commands here.
+                
+                Write-Host "Running random task"
 
   
