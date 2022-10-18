@@ -25,13 +25,13 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                # Write your PowerShell commands here.
-                
                 Write-Host "Running random task"
   
   - stage: Stage2
     jobs:
       - job: Job1
+        variables: 
+           vmList: $[ stageDependencies.Stage1.Job1.outputs['Task1.vmList'] ]
         steps:
           - task: PowerShell@2
             name: Task1
@@ -39,9 +39,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                $VMs = @()
-                $VMs = "$[ stageDependencies.Stage1.Job1.outputs['Task1.vmList'] ]"
-                $VMs
+                Write-Host "VM List: $vmList"
 
   
 
