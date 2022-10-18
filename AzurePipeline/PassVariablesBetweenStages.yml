@@ -28,5 +28,21 @@ stages:
                 # Write your PowerShell commands here.
                 
                 Write-Host "Running random task"
+  
+  - stage: Stage2
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            name: Task1
+            displayName: Get Variable From Stage1
+            inputs:
+              targetType: 'inline'
+              script: |
+                $VMs = @()
+                $VMs = $[ stageDependencies.Stage1.Job1.outputs['task1.vmList'] ]
+                $VMs
+
+  
 
   
