@@ -25,7 +25,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                Write-Host "Running random task"
+                Write-Host "VMName: $(vmList)"
   
   - stage: Stage2
     jobs:
