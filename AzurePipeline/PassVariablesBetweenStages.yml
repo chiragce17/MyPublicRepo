@@ -25,7 +25,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                Write-Host "Some Random Task)"
+                Write-Host "Some Random Task"
   
   - stage: Stage2
     jobs:
