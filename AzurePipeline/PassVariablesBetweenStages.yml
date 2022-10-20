@@ -16,7 +16,7 @@ stages:
               targetType: 'inline'
               script: |
                 $VMs = @("TestVM1","TestVM2","TestVM3")
-                Write-Host "##vso[task.setvariable variable=vmList;]$VMs"
+                Write-Host "##vso[task.setvariable variable=vmList;isOutput=true]$VMs"
 
           
           - task: PowerShell@2
@@ -25,7 +25,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                Write-Host "VMName: $(vmList)"
+                Write-Host "Some Random Task)"
   
   - stage: Stage2
     jobs:
@@ -39,7 +39,7 @@ stages:
             inputs:
               targetType: 'inline'
               script: |
-                Write-Host "VM List: $vmList"
+                Write-Host "VM List: $(vmList)"
 
   
 
