@@ -19,3 +19,5 @@ foreach($server in $Servers) {
 
 $output
 $output | Export-Csv $outFile -NoTypeInformation 
+Write-Host "`nScript execution is completed" -f Green
+Write-Output "OutputFile: $outFile"
