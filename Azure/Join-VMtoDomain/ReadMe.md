@@ -15,4 +15,6 @@
 
 `.\Join-VMtoDomain.ps1 -AzureSubscription 'xxxx-xxxx-xxxx-xx' -VmFilePath C:\Temp\Vms.txt -DomainName YourDomaintoJoin.local `
 
-- Once you click enter, it will ask you for the Domain credenatials.
+- Once you click enter, it will ask you for the Domain credenatials as shown below.
+
+![image](https://user-images.githubusercontent.com/25211462/200867152-cfd989ab-ef8f-4d56-85e1-cb820b8afe17.png)
