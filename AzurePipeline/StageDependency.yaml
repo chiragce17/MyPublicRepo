@@ -1,0 +1,61 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- None
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: A
+    displayName: Stage A
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "Running Stage-A"
+                
+  
+  - stage: B
+    displayName: Stage B
+    dependsOn: A
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "This stage will run After Stage-A"
+  
+  - stage: C
+    displayName: Stage C
+    dependsOn: A
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "This stage will run after stage A and parallel with Stage C"
+
+  - stage: D
+    displayName: Stage D
+    dependsOn:
+      - B
+      - C
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "This stage will run after stage B and Stage C"
