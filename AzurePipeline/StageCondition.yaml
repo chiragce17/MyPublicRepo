@@ -1,0 +1,47 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- None
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: A
+    displayName: Stage A
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                throw 'Failing Stage-A'
+                
+  
+  - stage: B
+    displayName: Stage B
+    condition: failed('A')
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "This stage will run if the stage-A failed"
+
+  - stage: C
+    displayName: Stage C
+    condition: succeeded('B')
+    jobs:
+      - job: Job1
+        steps:
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "This stage will run if the stage-B succeeded regardless of the stage-A status"
