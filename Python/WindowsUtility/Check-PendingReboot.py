@@ -10,7 +10,6 @@ count = 0
 
 for i in range(30):
     try:
-        #print(winreg.EnumKey(auto_update_key,i))
         if(winreg.EnumKey(auto_update_key,i) == "RebootRequired"):
             count = 1
             break
