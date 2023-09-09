@@ -1,0 +1,2 @@
+resourceGroupName = "TestRG"
+environment = "prod"
