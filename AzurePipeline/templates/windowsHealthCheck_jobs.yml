@@ -1,0 +1,11 @@
+jobs:
+  - job: serviceJob
+    steps: 
+        - powershell: |
+            Get-Service | where{($_.StartType -eq 'Automatic') -and ($_.Status -eq 'Running')}
+        displayName: List of Automatic and running services
+  
+   - job: memoryJob
+     steps: 
+        - powershell: |
+            Get-Process | Sort-Object -Property CPU -Descending | Select -First 5

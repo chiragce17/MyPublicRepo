@@ -1,0 +1,7 @@
+trigger: none
+
+pool:
+  vmImage: windows-latest
+
+stages:
+  - template: templates/windowsHealtchCheck_stage.yml
