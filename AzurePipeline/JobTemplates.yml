@@ -1,0 +1,15 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: stage1
+    jobs:
+      - template: templates/WindowsHealtchCheck_jobs.yml
+    
+
+  - stage: stage2
+    jobs:
+      - template: templates/WindowsHealtchCheck_jobs.yml
