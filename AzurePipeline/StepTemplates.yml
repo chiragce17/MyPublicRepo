@@ -14,15 +14,15 @@ stages:
     jobs:
       - job: job1
         steps:
-          - template: templates/WindowsHealtchCheck.yml
+          - template: templates/windowsHealtchCheck.yml
     
       - job: job2
         steps:
-          - template: templates/WindowsHealtchCheck.yml
+          - template: templates/windowsHealtchCheck.yml
     
 
   - stage: stage2
     jobs:
       - job: job1
         steps:
-          - template: templates/WindowsHealtchCheck.yml
+          - template: templates/windowsHealtchCheck.yml
